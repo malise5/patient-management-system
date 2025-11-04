@@ -2,7 +2,6 @@ package com.pm.patientservice.controller;
 
 import com.pm.patientservice.dtos.PatientRequestDTO;
 import com.pm.patientservice.dtos.PatientResponseDTO;
-import com.pm.patientservice.model.Patient;
 import com.pm.patientservice.service.PatientService;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
@@ -29,6 +27,13 @@ public class PatientController {
         List<PatientResponseDTO> patients =  patientService.getAllPatients();
 
         return ResponseEntity.ok().body(patients);
+    }
+
+    @GetMapping("/under18Years")
+    public ResponseEntity<List<PatientResponseDTO>> getUnder18Years(){
+        List<PatientResponseDTO> under18Years = patientService.getPatientsUnder18();
+
+        return ResponseEntity.ok().body(under18Years);
     }
 
     @PostMapping
