@@ -7,7 +7,9 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,5 +44,12 @@ public class PatientController {
         PatientResponseDTO newPatient = patientService.createNewPatient(patientRequest);
 
         return new ResponseEntity<>(newPatient, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{patientId}")
+    public ResponseEntity<PatientResponseDTO> updatePatient(@Valid @RequestBody PatientRequestDTO patientRequest, @PathVariable Long patientId){
+        PatientResponseDTO updatePatient = patientService.updatePatient(patientId, patientRequest);
+
+        return new ResponseEntity<>(updatePatient, HttpStatus.OK);
     }
 }

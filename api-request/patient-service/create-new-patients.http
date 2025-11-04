@@ -3,9 +3,9 @@ POST http://localhost:4000/api/v1/patients
 Content-Type: application/json
 
 {
-  "name": "sam Juma",
-  "email": "",
-  "address": "Springfield, IL",
-  "dateOfBirth": "2017-07-15",
-  "registrationDate": "2025-11-03"
+  "name": "zeinab Hassan",
+  "email": "zeinab@gmail.com",
+  "address": "Nairobi Vile, IL",
+  "dateOfBirth": "03-05-2010",
+  "registrationDate": "03-11-2012"
 }

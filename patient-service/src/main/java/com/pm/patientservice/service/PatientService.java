@@ -17,4 +17,6 @@ public interface PatientService {
     PatientResponseDTO createNewPatient(@Valid PatientRequestDTO patientRequest);
 
     List<PatientResponseDTO> getPatientsUnder18();
+
+    PatientResponseDTO updatePatient(@Valid Long id, PatientRequestDTO patientRequest);
 }
