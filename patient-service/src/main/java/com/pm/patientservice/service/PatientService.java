@@ -19,4 +19,6 @@ public interface PatientService {
     List<PatientResponseDTO> getPatientsUnder18();
 
     PatientResponseDTO updatePatient(@Valid Long id, PatientRequestDTO patientRequest);
+
+    void deletePatient(Long patientId);
 }
