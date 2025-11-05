@@ -1,8 +1,10 @@
 package com.pm.patientservice.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.pm.patientservice.validators.CreatePatientValidationGroups;
 import java.time.LocalDate;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,10 +32,12 @@ public class PatientRequestDTO {
 
     @NotNull(message = "Date of birth is required")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @Schema(type = "string", pattern = "dd-MM-yyyy", example = "05-11-2025")
     private LocalDate dateOfBirth;
 
-    @NotNull(message = "Registration date is required")
+    @NotNull(groups = CreatePatientValidationGroups.class, message = "Registration date is required")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @Schema(type = "string", pattern = "dd-MM-yyyy", example = "05-11-2025")
     private LocalDate registrationDate;
 
 }
