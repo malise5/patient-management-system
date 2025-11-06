@@ -2,7 +2,7 @@
 -- Table: patient
 -- =============================================
 CREATE TABLE IF NOT EXISTS patient (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,  -- Use BIGSERIAL for auto-increment in PostgreSQL
     name VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
     address VARCHAR(255) NOT NULL,
