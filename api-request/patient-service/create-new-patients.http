@@ -3,9 +3,9 @@ POST http://localhost:4000/api/v1/patients
 Content-Type: application/json
 
 {
-  "name": "zeinab Hassan",
-  "email": "zeinab@gmail.com",
-  "address": "Nairobi Vile, IL",
+  "name": "Hassan Jason",
+  "email": "Drulo@gmail.com",
+  "address": "Moyale Vile, IL",
   "dateOfBirth": "03-05-2010",
   "registrationDate": "03-11-2012"
 }

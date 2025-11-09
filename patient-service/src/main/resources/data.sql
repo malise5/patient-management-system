@@ -1,7 +1,12 @@
 -- =============================================
+-- Drop Table if it exists (prevents duplicate key errors)
+-- =============================================
+DROP TABLE IF EXISTS patient CASCADE;
+
+-- =============================================
 -- Table: patient
 -- =============================================
-CREATE TABLE IF NOT EXISTS patient (
+CREATE TABLE patient (
     id BIGSERIAL PRIMARY KEY,  -- Use BIGSERIAL for auto-increment in PostgreSQL
     name VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
