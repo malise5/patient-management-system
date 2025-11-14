@@ -24,7 +24,7 @@ import jakarta.validation.groups.Default;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("api/v1/patients")
+@RequestMapping("/patients")
 @Tag(name = "Patient", description = "API for managing patients")
 @RequiredArgsConstructor
 public class PatientController {
