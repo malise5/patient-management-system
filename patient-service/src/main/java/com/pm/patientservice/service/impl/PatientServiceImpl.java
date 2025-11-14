@@ -7,6 +7,7 @@ import com.pm.patientservice.customExceptions.PatientNotFoundException;
 import com.pm.patientservice.dtos.PatientRequestDTO;
 import com.pm.patientservice.dtos.PatientResponseDTO;
 import com.pm.patientservice.grpc.BillingServiceGrpcClient;
+import com.pm.patientservice.kafka.KafkaProducer;
 import com.pm.patientservice.mapper.PatientMapper;
 import com.pm.patientservice.model.Patient;
 import com.pm.patientservice.repository.PatientRepository;
@@ -26,6 +27,9 @@ public class PatientServiceImpl implements PatientService {
 
     private final PatientRepository patientRepository;
     private final BillingServiceGrpcClient billingServiceGrpcClient;
+    private final KafkaProducer kafkaProducerClient;
+
+    private final KafkaProducer kafkaProducer;
 
     // Define formatter for dd-MM-yyyy
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -58,8 +62,11 @@ public class PatientServiceImpl implements PatientService {
 
         Patient savePatient = patientRepository.save(newPatient);
 
+
+
         billingServiceGrpcClient.createBillingAccount(savePatient.getId().toString(), savePatient.getName(), savePatient.getEmail());
 
+        kafkaProducer.sendEvent(savePatient);
 
         return PatientMapper.toDto(savePatient);
 
